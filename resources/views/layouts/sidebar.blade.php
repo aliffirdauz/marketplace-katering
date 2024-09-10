@@ -7,30 +7,42 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" key="t-menu">Menu</li>
+                @if (Auth::user()->role == 'merchant')
+                    <li>
+                        <a href="{{ '/' }}" class="waves-effect">
+                            <i class="bx bx-home-circle"></i>
+                            <span key="t-dashboards">Dasbor</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{{'/'}}}" class="waves-effect">
-                        <i class="bx bx-home-circle"></i>
-                        <span key="t-dashboards">Dashboard</span>
-                    </a>
-                </li>
+                    <li class="menu-title" key="t-menu">Menu</li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
-                        <span key="t-layouts">Layouts</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Vertical</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Horizontal</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li>
+                        <a href="{{ '/menu' }}" class="waves-effect">
+                            <i class="bx bx-food-menu"></i>
+                            <span key="t-menu-managements">Pengelolaan Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ '/transaction' }}" class="waves-effect">
+                            <i class="bx bx-cart-alt"></i>
+                            <span key="t-order-lists">Daftar Pesanan</span>
+                        </a>
+                    </li>
+                @elseif (Auth::user()->role == 'customer')
+                    <li>
+                        <a href="{{ '/order' }}" class="waves-effect">
+                            <i class="bx bx-food-menu"></i>
+                            <span key="t-menu-managements">Daftar Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ '/mytransaction' }}" class="waves-effect">
+                            <i class="bx bx-cart-alt"></i>
+                            <span key="t-order-lists">Daftar Pesanan</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->
