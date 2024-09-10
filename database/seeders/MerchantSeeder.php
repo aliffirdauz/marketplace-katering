@@ -20,7 +20,7 @@ class MerchantSeeder extends Seeder
                 'description' => 'Warung makan sederhana yang menyediakan berbagai macam menu makanan',
                 'address' => 'Jl. Raya No. 1 Bandung',
                 'phone' => '08123456789',
-                'logo' => '1.jpg',
+                'logo' => '1.png',
             ],
             [
                 'user_id' => 2,
@@ -28,7 +28,7 @@ class MerchantSeeder extends Seeder
                 'description' => 'Warung makan enak yang menyediakan berbagai macam menu makanan',
                 'address' => 'Jl. Raya No. 2 Jakarta',
                 'phone' => '08123456788',
-                'logo' => '2.jpg',
+                'logo' => '2.png',
             ],
         ];
 

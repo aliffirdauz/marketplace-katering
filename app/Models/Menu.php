@@ -15,4 +15,9 @@ class Menu extends Model
     {
         return $this->belongsTo(Merchant::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

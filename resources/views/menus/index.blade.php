@@ -27,8 +27,6 @@
                                         <th>Harga</th>
                                         <th>Deskripsi</th>
                                         <th>Stok</th>
-                                        <th>Terjual</th>
-                                        <th>Ketersediaan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,8 +38,6 @@
                                             <td>{{ $menu->price }}</td>
                                             <td>{{ $menu->description }}</td>
                                             <td>{{ $menu->stock }}</td>
-                                            <td>{{ $menu->sold }}</td>
-                                            <td>{{ $menu->is_available ? 'Tersedia' : 'Tidak Tersedia' }}</td>
                                             <td>
                                                 <a href="{{ route('menus.show', $menu->id) }}" class="btn btn-primary"><i
                                                         class="bx bx-show"></i></a>

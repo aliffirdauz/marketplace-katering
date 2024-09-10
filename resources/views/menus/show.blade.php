@@ -51,16 +51,8 @@
                                                     <td>{{ $menu->stock }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">Terjual</th>
-                                                    <td>{{ $menu->sold }}</td>
-                                                </tr>
-                                                <tr>
                                                     <th scope="row">Kategori</th>
                                                     <td>{{ $menu->category }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Ketersediaan</th>
-                                                    <td>{{ $menu->is_available ? 'Tersedia' : 'Tidak Tersedia' }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

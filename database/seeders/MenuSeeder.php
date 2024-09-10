@@ -27,7 +27,7 @@ class MenuSeeder extends Seeder
                 'name' => 'Paket Ikan Bakar',
                 'description' => 'Paket Ikan Bakar + Nasi + Sambal + Lalapan + Es Teh',
                 'price' => 30000,
-                'image' => 'ikan-bakar.jpg',
+                'image' => 'ikan-bakar.jpeg',
                 'category' => 'Lauk Ikan',
                 'stock' => 100,
                 'merchant_id' => 1,

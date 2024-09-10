@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rules;
+use App\Models\Transaction;
 
 
 class MerchantController extends Controller
@@ -46,11 +47,11 @@ class MerchantController extends Controller
             'phone_merchant' => ['required', 'numeric', 'digits_between:10,15'],
             'description_merchant' => ['required', 'string', 'max:255'],
             'logo_merchant' => ['required', 'image', 'max:1024'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', Rules\Password::defaults()],
             'role' => ['required']
         ]);
-        
+
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -58,14 +59,14 @@ class MerchantController extends Controller
         ]);
 
         $logo = $request->file('logo_merchant');
-        $logo->storeAs('public/logos', $user->id.'.'.$logo->extension());
+        $logo->storeAs('public/logos', $user->id . '.' . $logo->extension());
 
         $user->merchant()->create([
             'name' => $request->name_merchant,
             'address' => $request->address_merchant,
             'phone' => $request->phone_merchant,
             'description' => $request->description_merchant,
-            'logo' => $user->id.'.'.$logo->extension(),
+            'logo' => $user->id . '.' . $logo->extension(),
         ]);
 
         event(new Registered($user));
@@ -73,6 +74,17 @@ class MerchantController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
+    }
+
+    public function order()
+    {
+        $merchant = Auth::user()->merchant;
+        // get transaction join pemesanans where merchant_id like merchant->id
+        $orders = Transaction::where('menu_id', $merchant->id)
+            ->join('pemesanans', 'transactions.id', '=', 'pemesanans.transaction_id')
+            ->get();
+
+        return view('orders.index-merchant', compact('orders'));
     }
 
     /**

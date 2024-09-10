@@ -20,13 +20,19 @@ Route::middleware(['auth', 'merchant'])->group(function () {
     Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
     Route::patch('/menu/{menu}', [MenuController::class, 'update'])->name('menus.update');
     Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+
+    Route::get('/transaction', [MerchantController::class, 'order'])->name('order');
 });
 
 Route::middleware(['auth', 'customer'])->group(function () {
     Route::get('/order', [CustomerController::class, 'index'])->name('order');
-
     Route::get('/order/show', [CustomerController::class, 'show'])->name('order.show');
+    Route::post('/order/store', [CustomerController::class, 'store'])->name('order.store');
+
+    Route::get('/order/history', [CustomerController::class, 'history'])->name('order.history');
+    
 });
+Route::get('order/invoice/{id}', [CustomerController::class, 'invoice'])->name('order.invoice')->middleware('auth');
 
 Route::get('register-merchant', [MerchantController::class, 'create'])
     ->middleware('guest')

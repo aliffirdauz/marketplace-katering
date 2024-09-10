@@ -47,6 +47,29 @@
             <!-- end main content-->
         </div>
         <!-- END layout-wrapper -->
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+                    <h5 class="m-0 me-2">Pesanan Saya</h5>
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Daftar Pesanan</h6>
+
+                <div class="p-4">
+                    {{-- create form to input the cart --}}
+                    {{-- <form action="{{ route('order.store') }}" method="POST" class="cart-form" enctype="multipart/form-data">
+                        @csrf
+                        <!-- Cart items will be dynamically inserted here -->
+                    </form> --}}
+                </div>
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
 
         <!-- ============================================================== -->
         <!-- JAVASCRIPT -->
@@ -81,6 +104,7 @@
         <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
         <!-- Datatable init js -->
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+        @yield('script')
 </body>
 
 </html>

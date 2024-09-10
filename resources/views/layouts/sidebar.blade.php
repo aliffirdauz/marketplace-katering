@@ -37,9 +37,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/mytransaction' }}" class="waves-effect">
+                        <a href="{{ '/order/history' }}" class="waves-effect">
                             <i class="bx bx-cart-alt"></i>
-                            <span key="t-order-lists">Daftar Pesanan</span>
+                            <span key="t-order-lists">Riwayat Pemesanan</span>
                         </a>
                     </li>
                 @endif
